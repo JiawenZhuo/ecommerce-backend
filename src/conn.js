@@ -10,7 +10,7 @@ module.exports={
             if(err || !db){
                 return Callback(err);
             }
-            dbConnection = db.db("sample_airbnb");
+            dbConnection = db.db("ecommerce");
             console.log("successsfuly connect to mongodb");
             return Callback();
         });
