@@ -6,7 +6,7 @@ const dbo = require("../conn");
 
 
 //read route
-recordRoutes.route('/users').get(async function (_req, res) {
+recordRoutes.route('/users').get(async function (req, res) {
     const dbConnect = dbo.getDb();
   
     dbConnect
@@ -32,7 +32,7 @@ recordRoutes.route('/users/new').post(function(req, res) {
 
     dbConnect
     .collection("users")
-    .insertOne(matchDocument, function(err, result){
+    .insert(matchDocument, function(err, result){
         if(err){
             res.status(400).send("error inserting");
         }else{
