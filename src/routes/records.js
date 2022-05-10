@@ -36,23 +36,38 @@ recordRoutes.route('/users/new').post(function(req, res) {
         if(err){
             res.status(400).send("error inserting");
         }else{
-            console.log(`add new user with username ${req.body.username} and id ${result.insertedId} `);
+            console.log(req.body);
+            console.log(`add new user with username and id ${result.insertedId} `);
             res.status(205).send();
         }
     });
 })
 
-//update users
-recordRoutes.route('users/update').post(function(req, res) {
-    const dbConnect = dbo.getDb();
-    const ChangedUser = {
-        newPassword: req.body.newPassword
-    }
+// //update users
+// recordRoutes.route('users/update').post(function(req, res) {
+//     const dbConnect = dbo.getDb();
+//     const ChangedUser = {
+//         newPassword: req.body.newPassword
+//     }
 
+//     dbConnect
+//     .collection("users")
+//     .updateOne()
+// })
+
+//delete users
+recordRoutes.route('/delete').delete(function(req, res){
+    const dbConnect =dbo.getDb();
+    const deleteVal = req.body.delete;
+  
     dbConnect
-    .collection("users")
-    .updateOne()
-
+    .collection('users')
+    .deleteOne({ username : deleteVal}, function(err){
+        if(err){
+            res.status(404).send('delete fail');
+        }
+        res.status(201).send('delete successful');
+    });
 })
 
     
