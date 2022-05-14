@@ -4,6 +4,8 @@ const recordRoutes = express.Router();
 
 const dbo = require("../conn");
 
+const jwt = require('jsonwebtoken');
+ let freshTokens = [];
 
 //read route
 recordRoutes.route('/users').get(async function (req, res) {
@@ -22,7 +24,7 @@ recordRoutes.route('/users').get(async function (req, res) {
       });
   });
 
-//create route
+//create resgister
 recordRoutes.route('/users/new').post(function(req, res) {
     const dbConnect = dbo.getDb();
     const matchDocument = {
@@ -70,6 +72,9 @@ recordRoutes.route('/delete').delete(function(req, res){
     });
 })
 
+function generateAccessToken(user){
+    return jwt.sign(user, profess.env.ACCESS_TOKEN_SECRET, {expiresIn: '15x'})
+}
     
     
 
