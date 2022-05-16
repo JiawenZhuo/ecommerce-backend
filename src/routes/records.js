@@ -29,7 +29,8 @@ recordRoutes.route('/users/new').post(function(req, res) {
     const dbConnect = dbo.getDb();
     const matchDocument = {
         username: req.body.username,
-        password: req.body.password
+        password: req.body.password,
+        loginStatus: false
     }
 
     dbConnect
