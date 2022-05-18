@@ -4,12 +4,12 @@ const cors = require("cors");
 
 require("dotenv").config({ path: "./config.env" });
 app.use(cors());
-const dbo = require('./src/conn');
+const dbo = require('./conn');
 
 app.use(express.json());
-const recordRoutes = require('./src/routes/records');
+const recordRoutes = require('./routes/records');
 app.use(recordRoutes);
-const accounts = require('./src/routes/users')
+const accounts = require('./routes/users')
 app.use(accounts);
   dbo.connectToServer(function (err) {
     if (err) {
