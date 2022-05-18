@@ -1,16 +1,15 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3001;
 const cors = require("cors");
 
 require("dotenv").config({ path: "./config.env" });
 app.use(cors());
-const dbo = require('./conn');
+const dbo = require('./src/conn');
 
 app.use(express.json());
-const recordRoutes = require('./routes/records');
+const recordRoutes = require('./src/routes/records');
 app.use(recordRoutes);
-const accounts = require('./routes/users')
+const accounts = require('./src/routes/users')
 app.use(accounts);
   dbo.connectToServer(function (err) {
     if (err) {
@@ -18,8 +17,8 @@ app.use(accounts);
       process.exit();
     }
 
-    app.listen(port, () =>{
-        console.log(`example app listen on port ${port}`);
+    app.listen((process.env.PORT || 3001), () =>{
+        console.log(`example app listen on port `);
     });
   });
 
