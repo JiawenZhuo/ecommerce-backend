@@ -8,7 +8,7 @@ const jwt = require('jsonwebtoken');
  let freshTokens = [];
 
 //read route
-recordRoutes.route('/users').get(async function (req, res) {
+recordRoutes.route('users').get(async function (req, res) {
     const dbConnect = dbo.getDb();
   
     dbConnect
@@ -25,7 +25,7 @@ recordRoutes.route('/users').get(async function (req, res) {
   });
 
 //create resgister
-recordRoutes.route('/users/new').post(function(req, res) {
+recordRoutes.route('users/new').post(function(req, res) {
     const dbConnect = dbo.getDb();
     const matchDocument = {
         username: req.body.username,
