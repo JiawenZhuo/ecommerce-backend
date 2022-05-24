@@ -6,7 +6,7 @@ const dbo = require("../conn");
 
 
 //user login
-accounts.route('accounts/login').post(async function (req, res) {
+accounts.route('/accounts/login').post(async function (req, res) {
     const dbConnect = dbo.getDb();
     const username = req.body.name;
     let user_id;
