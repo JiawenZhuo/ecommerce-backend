@@ -14,7 +14,7 @@ recordRoutes.route('/users').get(async function (req, res) {
     dbConnect
       .collection('users')
       .find({})
-      .limit(50)
+      .limit(100)
       .toArray(function (err, result) {
         if (err) {
           res.status(400).send('Error fetching users!');
@@ -34,8 +34,8 @@ recordRoutes.route('/users/new').post(function(req, res) {
     }
 
     dbConnect
-    .collection("/users")
-    .insert(matchDocument, function(err, result){
+    .collection("users")
+    .insertOne(matchDocument, function(err, result){
         if(err){
             res.status(400).send("error inserting");
         }else{
@@ -65,7 +65,7 @@ recordRoutes.route('/delete').delete(function(req, res){
   
     dbConnect
     .collection('users')
-    .deleteOne({ username : deleteVal}, function(err){
+    .deleteOne({ username : req.body.username}, function(err){
         if(err){
             res.status(404).send('delete fail');
         }
