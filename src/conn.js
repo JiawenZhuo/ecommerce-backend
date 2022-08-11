@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
 
-const connectionString ="mongodb+srv://Jiawen:Password@cluster0.bw8sf.mongodb.net/test?retryWrites=true&w=majority";
+const connectionString ="mongodb+srv://Jiawen_Zhuo:Password@cluster0.zl2rpzj.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(connectionString);
 
 let dbConnection;

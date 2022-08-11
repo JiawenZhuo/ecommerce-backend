@@ -40,7 +40,7 @@ recordRoutes.route('/users/new').post(function(req, res) {
             res.status(400).send("error inserting");
         }else{
             console.log(req.body);
-            console.log(`add new user with username and id ${result.insertedId} `);
+            console.log(`add new user with ${req.body.username} and id ${result.insertedId} `);
             res.status(205).send();
         }
     });
